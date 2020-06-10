@@ -1,0 +1,19 @@
+package com.workforce.springbootshiftbelonger.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@ToString
+@Builder
+public class ShiftGrouping {
+    private int id;
+    private String shiftCode;
+    private String shiftGroupCode;
+
+}
