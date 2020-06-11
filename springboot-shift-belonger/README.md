@@ -5,32 +5,39 @@ The following was discovered as part of building this project:
 
 # Getting Started
 
-### Reference Documentation
-For further reference, please consider the following sections:
+### Application boot up
+1. For database schema and table creation, please run application with 
+	spring.jpa.hibernate.ddl-auto=create
+2. After, that please update the value accordingly. 
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/gradle-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/htmlsingle/#boot-features-developing-web-applications)
-* [Spring Security](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/htmlsingle/#boot-features-security)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/htmlsingle/#boot-features-jpa-and-spring-data)
-* [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/htmlsingle/#production-ready)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/2.3.0.RELEASE/reference/htmlsingle/#using-boot-devtools)
 
-### Guides
-The following guides illustrate how to use some features concretely:
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
-* [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
-* [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Building a RESTful Web Service with Spring Boot Actuator](https://spring.io/guides/gs/actuator-service/)
+### Database relationship:
+ There are three tables
+ 1. shift 
+ 	id-> primary key, auto incremented
+ 	code-> unique, not null
 
-### Database relation
-These additional references should also help you:
+2. shift_group 
+	id->primary key, auto incremented
+	code-> unique, not null
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
+3. shift_grouping
+	id->primary key, auto incremented
+	shift_code-> foreign key(shift.code)
+	shift_group_code-> foreign key(shift_group.code)
+
+Table shift code will have one to many relation with shift_grouping and vice versa(Many to one)
+Table shift_group code will have one to many relation with shift_grouping and vice versa(Many to one)
+
+Assumptions and Decision
+
+	1. I have assumed the in shift_grouping table shift_code and shift_group_code may can contain same record as mentioned in the diagram.So, decided to to keep one occurrence.
+	2. As the solution is related to check the shift belongs to group hence decided to keep Cacheable annotation. We can also implement Redis Cache for loading the data and search on those data for 
+	huge number of records in short duration of time.
+	 
+	
+	 
+
+	
 
