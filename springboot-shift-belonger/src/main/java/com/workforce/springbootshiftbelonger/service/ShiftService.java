@@ -19,12 +19,27 @@ public interface ShiftService {
      */
     List<ShiftCode> getShifts();
 
+    /**
+     * @param groupCode
+     */
     void saveGroup(String groupCode);
 
+    /**
+     * @param shiftCode
+     */
     void saveShift(String shiftCode);
 
+    /**
+     * @param shiftCode
+     * @param shiftGroup
+     */
     void associateShiftGroup(String shiftCode, String shiftGroup);
 
+    /**
+     * @param shiftCode
+     * @param groupCode
+     * @return
+     */
     ShiftCheckDto doesShiftBelongsToGroup(String shiftCode, String groupCode);
 
 }

@@ -69,7 +69,7 @@ public class ShiftController {
     @GetMapping(value = "/checkshiftgroups/{shiftCode}/{groupCode}")
     public ResponseEntity<ShiftCheckDto> checkshiftBelongsToGroup(@PathVariable String shiftCode,
 	    @PathVariable String groupCode) {
-	log.info("checkshiftBelongsToGroup shift code: {} with group code: {}", shiftCode, groupCode);
+	log.info("associating shift code: {} with group code: {}", shiftCode, groupCode);
 	return ResponseEntity.status(HttpStatus.OK).body(shiftService.doesShiftBelongsToGroup(shiftCode, groupCode));
     }
 }

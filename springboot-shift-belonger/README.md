@@ -27,8 +27,8 @@ The following was discovered as part of building this project:
 	shift_code-> foreign key(shift.code)
 	shift_group_code-> foreign key(shift_group.code)
 
-Table shift code will have one to many relation with shift_grouping and vice versa(Many to one)
-Table shift_group code will have one to many relation with shift_grouping and vice versa(Many to one)
+Table shift code will have one to many relation with shift_grouping and vice versa(Many to One)
+Table shift_group code will have one to many relation with shift_grouping and vice versa(Many to One)
 
 Assumptions and Decision
 
